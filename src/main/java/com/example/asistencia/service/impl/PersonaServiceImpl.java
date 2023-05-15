@@ -76,4 +76,9 @@ public class PersonaServiceImpl implements PersonaService {
     public void deleteById(Integer id) {
         personaRepository.deleteById(id);
     }
+
+    @Override
+    public List<Persona> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(String ciclo, String grupo, Integer escuelaProfesionalId) {
+        return personaRepository.findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(ciclo, grupo, escuelaProfesionalId);
+    }
 }

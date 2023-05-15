@@ -1,6 +1,8 @@
 package com.example.asistencia.service.impl;
 
+import com.example.asistencia.Repository.AsistenciaListarRepository;
 import com.example.asistencia.Repository.AsistenciaRepository;
+import com.example.asistencia.dto.AsistenciaDto;
 import com.example.asistencia.entity.Asistencia;
 import com.example.asistencia.service.AsistenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +15,14 @@ import java.util.Optional;
 public class AsistenciaServiceImpl implements AsistenciaService {
     @Autowired
     private AsistenciaRepository asistenciaRepository;
+    @Autowired
+    private AsistenciaListarRepository asistenciaListarRepository;
 
     @Override
     public List<Asistencia> list() {
         return asistenciaRepository.findAll();
     }
+
     @Override
     public Asistencia save(Asistencia asistencia) {
         return asistenciaRepository.save(asistencia);
@@ -36,5 +41,10 @@ public class AsistenciaServiceImpl implements AsistenciaService {
     @Override
     public void deleteById(Integer id) {
         asistenciaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<AsistenciaDto> listAsistencia(String id) {
+        return asistenciaListarRepository.listAsistencia(id);
     }
 }

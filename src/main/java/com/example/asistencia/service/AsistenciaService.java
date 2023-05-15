@@ -1,5 +1,6 @@
 package com.example.asistencia.service;
 
+import com.example.asistencia.dto.AsistenciaDto;
 import com.example.asistencia.entity.Asistencia;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface AsistenciaService {
     public Optional<Asistencia> listById(Integer id);
 
     public void deleteById(Integer id);
+
+    public List<AsistenciaDto> listAsistencia(String id);
 }

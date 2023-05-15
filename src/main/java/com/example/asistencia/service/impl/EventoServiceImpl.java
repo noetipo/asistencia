@@ -1,7 +1,9 @@
 package com.example.asistencia.service.impl;
 
 import com.example.asistencia.Repository.EventoRepository;
+import com.example.asistencia.Repository.PeriodoRepository;
 import com.example.asistencia.entity.Evento;
+import com.example.asistencia.entity.Periodo;
 import com.example.asistencia.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import java.util.Optional;
 public class EventoServiceImpl implements EventoService {
     @Autowired
     private EventoRepository eventoRepository;
+    @Autowired
+    private PeriodoRepository periodoRepository;
 
     @Override
     public List<Evento> list() {
@@ -21,6 +25,8 @@ public class EventoServiceImpl implements EventoService {
 
     @Override
     public Evento save(Evento evento) {
+        Optional<Periodo> periodo = periodoRepository.findByEstadoTrue();
+        evento.setPeriodo(periodo.get());
         return eventoRepository.save(evento);
     }
 
@@ -37,5 +43,10 @@ public class EventoServiceImpl implements EventoService {
     @Override
     public void deleteById(Integer id) {
         eventoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Evento> findByEscuelaProfesionalIdAndEstadoTrue(Integer id) {
+        return eventoRepository.findByEscuelaProfesionalIdAndEstadoTrue(id);
     }
 }

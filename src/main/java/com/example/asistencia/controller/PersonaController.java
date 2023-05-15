@@ -23,13 +23,13 @@ public class PersonaController {
 
     @PostMapping()
     public ResponseEntity<Persona> save(@RequestBody PersonaDto
-                                                    personaDto) {
+                                                personaDto) {
         return ResponseEntity.ok(personaService.save(personaDto));
     }
 
     @PutMapping()
     public ResponseEntity<Persona> update(@RequestBody PersonaDto
-                                                      personaDto) {
+                                                  personaDto) {
         return ResponseEntity.ok(personaService.update(personaDto));
     }
 
@@ -42,6 +42,13 @@ public class PersonaController {
     public String deleteById(@PathVariable(required = true) Integer id) {
         personaService.deleteById(id);
         return "Deleted Successfully";
+    }
+
+    @GetMapping("/matricula")
+    public ResponseEntity<List<Persona>> findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(@RequestParam String ciclo,
+                                                                                                   @RequestParam String grupo,
+                                                                                                   @RequestParam Integer escuelaProfesionalId) {
+        return ResponseEntity.ok().body(personaService.findByCicloAndGrupoAndEscuelaProfesionalIdAndEstadoTrue(ciclo, grupo, escuelaProfesionalId));
     }
 
 }

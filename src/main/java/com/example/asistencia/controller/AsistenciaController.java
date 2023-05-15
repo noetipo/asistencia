@@ -1,5 +1,6 @@
 package com.example.asistencia.controller;
 
+import com.example.asistencia.dto.AsistenciaDto;
 import com.example.asistencia.entity.Asistencia;
 import com.example.asistencia.entity.Asistencia;
 import com.example.asistencia.service.AsistenciaService;
@@ -38,5 +39,9 @@ public class AsistenciaController {
     public String deleteById(@PathVariable(required = true) Integer id) {
         asistenciaService.deleteById(id);
         return "Deleted Successfully";
+    }
+    @GetMapping("/reporte/{id}")
+    public ResponseEntity<List<AsistenciaDto>> list(@PathVariable(required = true) String id) {
+        return ResponseEntity.ok().body(asistenciaService.listAsistencia(id));
     }
 }
