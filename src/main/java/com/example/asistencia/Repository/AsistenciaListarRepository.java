@@ -18,9 +18,9 @@ public interface AsistenciaListarRepository extends JpaRepository<AsistenciaDto,
             "       p.id,\n" +
             "       (select a.fecha_entrada\n" +
             "        from asistencia a\n" +
-            "        where a.fecha_id = ?1 and a.matricula_id = m.id\n" +
+            "        where a.evento_detalle_id= ?1 and a.matricula_id = m.id\n" +
             "        limit 1)                                                                                           fecha_entrada,\n" +
-            "       (select a.fecha_salida from asistencia a where a.fecha_id = ?1 and a.matricula_id = m.id limit 1) fecha_salida\n" +
+            "       (select a.fecha_salida from asistencia a where a.evento_detalle_id = ?1 and a.matricula_id = m.id limit 1) fecha_salida\n" +
             "from matricula m\n" +
             "         left join persona p on p.id = m.persona_id\n" +
             "         left join evento e on e.id = m.evento_id\n" +

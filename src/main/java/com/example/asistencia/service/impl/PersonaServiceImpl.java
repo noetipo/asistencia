@@ -49,7 +49,7 @@ public class PersonaServiceImpl implements PersonaService {
 
     @Override
     public Persona update(PersonaDto personaDto) {
-        Optional<Persona> persona = personaRepository.findById(personaDto.getPeriodoId());
+        Optional<Persona> persona = personaRepository.findById(personaDto.getId());
         persona.get().setCodigo(personaDto.getCodigo());
         persona.get().setDni(personaDto.getDni());
         persona.get().setNombre(personaDto.getNombre());
