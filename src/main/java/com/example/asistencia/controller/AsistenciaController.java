@@ -48,9 +48,9 @@ public class AsistenciaController {
                                                     @RequestParam String actividadId) {
         return ResponseEntity.ok().body(asistenciaService.listAsistencia(actividadId));
     }
-
     @GetMapping("/registro")
     public ResponseEntity<Optional<Mensaje>> saveAttendance(@RequestParam Integer eventoDetalleId, @RequestParam  Integer eventoId, @RequestParam String dni) {
         return ResponseEntity.ok().body(asistenciaService.registrarAsistencia(eventoDetalleId, eventoId, dni));
     }
+
 }
