@@ -5,7 +5,7 @@ services:
     build: .
     restart: always
     ports:
-      - 8081:8080
+      - 8080:8080
     depends_on:
       - monolito_db
 
@@ -25,7 +25,7 @@ services:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=asistencia
     ports:
-      - 4306:3306
+      - 3306:3306
     deploy:
       resources:
         limits:
